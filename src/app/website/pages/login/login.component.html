@@ -1,0 +1,82 @@
+<div class="container">
+  <div
+    class="row d-flex justify-content-center align-items-center login_container"
+  >
+    <div class="col-md-9 col-lg-6 col-xl-5">
+      <img
+        src="assets/images/logIn.png"
+        class="img-fluid"
+        alt="Sample image"
+        width="450"
+      />
+    </div>
+    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+      <form #loginForm="ngForm" (ngSubmit)="handelSubmit(loginForm)">
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <input
+            type="email"
+            id="form3Example3"
+            class="form-control form-control-lg"
+            placeholder=""
+            name="email"
+            [(ngModel)]="model.email"
+            #email="ngModel"
+            required
+            email
+          />
+          <label class="form-label" for="form3Example3">Email address</label>
+        </div>
+        <div
+          class="alert alert-danger p-1 mt-0"
+          role="alert"
+          *ngIf="email.invalid && email.dirty"
+        >
+          <div *ngIf="email.errors?.['required']">email is required</div>
+          <div *ngIf="email.errors?.['email']">email is invalid</div>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-3">
+          <input
+            type="password"
+            id="form3Example4"
+            class="form-control form-control-lg"
+            placeholder=""
+            name="password"
+            [(ngModel)]="model.password"
+            #password="ngModel"
+            required
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          />
+
+          <label class="form-label" for="form3Example4">Password</label>
+        </div>
+        <div
+          class="alert alert-danger p-1 mt-0"
+          role="alert"
+          *ngIf="password.invalid && password.dirty"
+        >
+          <div *ngIf="password.errors?.['required']">password is required</div>
+          <div *ngIf="password.errors?.['pattern']">
+            Must contain at least one number and one uppercase and lowercase
+            letter, and at least 8 or more characters
+          </div>
+        </div>
+        <div class="text-center text-lg-start mt-4 pt-2">
+          <button
+            type="submit"
+            class="main__btn"
+            style="padding-left: 2.5rem; padding-right: 2.5rem"
+          >
+            Login
+          </button>
+          <p class="small fw-bold mt-2 pt-1 mb-0">
+            Don't have an account?
+            <a routerLink="/register-student" class="link-danger">Register</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+img {
+  display: block;
+}
+.slider__home {
+}
+.carousel.slide {
+  height: 500px;
+}
+.home__title {
+  font-size: 50px;
+  font-family: "Roboto Slab", serif;
+  font-weight: 600;
+  color: black;
+  /* text-transform: capitalize; */
+}
+.home__title span {
+  color: #ffb228;
+}
+.home__description {
+  font: 18px;
+  width: 70%;
+  margin: 30px 0;
+  font-family: "Roboto Slab", serif;
+  font-family: "Acme", sans-serif;
+}

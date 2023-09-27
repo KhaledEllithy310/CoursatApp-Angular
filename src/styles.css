@@ -1,1 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --main-background-color: #ffb228;
+  --main-fontFamily: "Roboto Slab", serif;
+  --sec-fontFamily: "Acme", sans-serif;
+}
+
+/* body {
+  background-color: var(--main-background-color) !important;
+  color: white !important;
+} */
+
+.navbar {
+  /* background-color: ; */
+}
+.navbar .nav-link,
+.dropdown-item {
+  font-family: "Acme", sans-serif;
+  font-family: "Roboto Slab", serif;
+}
+input {
+  border: 0.5px solid #c6c6c6 !important;
+}
+
+.navbar__title {
+  font-family: "Tangerine", cursive !important;
+  font-weight: 700;
+  font-size: 40px !important;
+}
+
+.main__btn {
+  background-color: white;
+  color: black;
+  border-radius: 40px;
+  width: 10rem;
+  padding: 10px 0;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  font-family: "Roboto Slab", serif;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.main__btn::after {
+  content: "";
+  background-color: var(--main-background-color);
+  width: 0;
+  right: 0;
+  inset: 0;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s;
+}
+
+.main__btn:hover::after {
+  width: 100%;
+}
+.main__btn:hover {
+  color: white;
+}

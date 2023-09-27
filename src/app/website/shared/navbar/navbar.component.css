@@ -1,0 +1,33 @@
+:root {
+  --main-background-color: #ffb228;
+  --main-fontFamily: "Roboto Slab", serif;
+  --sec-fontFamily: "Acme", sans-serif;
+}
+
+.active {
+  background-color: var(--main-background-color);
+}
+.nav-link {
+  border-radius: 40px;
+  padding: 5px 20px !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.nav-item::before {
+  background-color: var(--main-background-color) !important;
+  height: 2px;
+  width: 0;
+  position: absolute;
+  transition: all 0.2s;
+  bottom: 0;
+  left: 0;
+  inset: 0;
+}
+
+.nav-item:hover::before {
+  width: 100%;
+}
+
+.nav-link:hover {
+}
