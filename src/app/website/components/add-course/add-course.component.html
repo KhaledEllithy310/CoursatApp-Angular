@@ -1,0 +1,129 @@
+<div class="addCourse">
+  <h2>Add Course</h2>
+  <form #addCourseForm="ngForm" (ngSubmit)="addCourse(addCourseForm)">
+    <!-- Name -->
+    <div class="form-group mb-4">
+      <input
+        type="text"
+        id="form3Example3"
+        class="form-control form-control-lg"
+        placeholder="Course Name"
+        name="name"
+        [(ngModel)]="model.name"
+        #name="ngModel"
+        required
+      />
+    </div>
+    <div
+      class="alert alert-danger p-1 mt-0"
+      role="alert"
+      *ngIf="name.invalid && name.dirty"
+    >
+      <div *ngIf="name.errors?.['required']">name is required</div>
+    </div>
+    <!-- description -->
+    <div class="form-group mb-4">
+      <textarea
+        name="description"
+        class="form-control"
+        placeholder="description Course"
+        id=""
+        rows="2"
+        [(ngModel)]="model.description"
+        #description="ngModel"
+        required
+      ></textarea>
+    </div>
+    <div
+      class="alert alert-danger p-1 mt-0"
+      role="alert"
+      *ngIf="description.invalid && description.dirty"
+    >
+      <div *ngIf="description.errors?.['required']">
+        description is required
+      </div>
+      <div *ngIf="description.errors?.['email']">description is invalid</div>
+    </div>
+    <!-- price-->
+    <div class="form-group mb-4">
+      <input
+        type="number"
+        id="form3Example3"
+        class="form-control form-control-lg"
+        placeholder="price"
+        name="price"
+        [(ngModel)]="model.price"
+        #price="ngModel"
+        required
+      />
+    </div>
+    <div
+      class="alert alert-danger p-1 mt-0"
+      role="alert"
+      *ngIf="price.invalid && price.dirty"
+    >
+      <div *ngIf="price.errors?.['required']">price is required</div>
+      <div *ngIf="price.errors?.['email']">price is invalid</div>
+    </div>
+
+    <!-- image -->
+    <div class="row align-items-center">
+      <div class="col-2 text-dark">Poster</div>
+      <div class="col-10">
+        <div class="form-group">
+          <input
+            type="file"
+            id="courseImage"
+            class="form-control form-control-lg"
+            #inputImage
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- category -->
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group my-4">
+          <select
+            name="categoryId"
+            id=""
+            class="form-control"
+            [(ngModel)]="model.categoryId"
+          >
+            <option value="">Select Category</option>
+            <option
+              value="{{ category._id }}"
+              *ngFor="let category of categories"
+            >
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <!-- <div class="col-6">
+        <div class="form-group my-4">
+          <select
+            name="InstructorId"
+            id=""
+            class="form-control"
+            [(ngModel)]="model.instructorId"
+          >
+            <option selected value="{{ currentUser._id }}" selected>
+              {{ currentUser.firstName + " " + currentUser.lastName }}
+            </option>
+          </select>
+        </div>
+      </div> -->
+    </div>
+    <div class="text-center pt-2">
+      <button
+        type="submit"
+        class="main__btn__dash"
+        style="padding-left: 2.5rem; padding-right: 2.5rem"
+      >
+        Add Course
+      </button>
+    </div>
+  </form>
+</div>

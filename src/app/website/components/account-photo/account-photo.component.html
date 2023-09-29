@@ -1,0 +1,34 @@
+<form action="" (ngSubmit)="handleSubmit()">
+  <div class="form-group">
+    <input
+      type="file"
+      id="courseImage"
+      class="form-control form-control-lg"
+      (change)="handleChange($event)"
+      name="image"
+      [(ngModel)]="image"
+    />
+    <button class="main__btn__dash mt-4">upload</button>
+  </div>
+</form>
+.
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-12 text-center" *ngIf="isLoading else showImage">
+      <img src="assets/images/loading2.gif" width="100" alt="" />
+    </div>
+    <div class="col-6 text-center" #showImage>
+      <img src="http://localhost:3000/{{ imageName }}" alt="" />
+    </div>
+  </div>
+</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center" *ngIf="isLoading">
+      <img src="assets/images/loading2.gif" width="100" alt="" />
+    </div>
+    <div class="col-6 text-center" *ngIf="!isLoading">
+      <img src="{{ imageName }}" width="300" alt="" />
+    </div>
+  </div>
+</div>

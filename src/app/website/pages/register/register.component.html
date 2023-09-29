@@ -5,7 +5,7 @@
     class="p-5 bg-image"
     style="
       background-image: url('assets/images/back-register.jpg');
-      height: 300px;
+      height: 200px;
     "
   ></div>
   <!-- Background image -->
@@ -13,7 +13,7 @@
   <div
     class="card mx-4 mx-md-5 shadow-5-strong"
     style="
-      margin-top: -180px;
+      margin-top: -70px;
       background: hsla(0, 0%, 100%, 0.8);
       backdrop-filter: blur(30px);
     "
@@ -21,138 +21,184 @@
     <div class="card-body py-4 px-md-5">
       <div class="row d-flex justify-content-center">
         <div class="col-lg-8">
-          <h2 class="fw-bold mb-5">Sign up now</h2>
-          <form>
+          <h2 class="fw-bold mb-5">Sign up as Student</h2>
+          <form #registerForm="ngForm" (ngSubmit)="handleSubmit(registerForm)">
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row">
               <div class="col-md-6 mb-4">
-                <div class="form-outline">
-                  <input type="text" id="form3Example1" class="form-control" />
-                  <label class="form-label" for="form3Example1"
-                    >First name</label
-                  >
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="form3Example1"
+                    class="form-control"
+                    placeholder="First name"
+                    name="firstName"
+                    [(ngModel)]="model.firstName"
+                    #firstName="ngModel"
+                    required
+                    minlength="2"
+                    maxlength="20"
+                  />
+                </div>
+                <div
+                  class="alert alert-danger p-1 mt-2 mb-0"
+                  role="alert"
+                  *ngIf="firstName.invalid && firstName.dirty"
+                >
+                  <div *ngIf="firstName.errors?.['required']">
+                    firstName is required
+                  </div>
+                  <div *ngIf="firstName.errors?.['minlength']">
+                    firstName is invalid min length 2 or greater
+                  </div>
+                  <div *ngIf="firstName.errors?.['maxlength']">
+                    firstName is invalid max length 20 or smaller
+                  </div>
                 </div>
               </div>
               <div class="col-md-6 mb-4">
-                <div class="form-outline">
-                  <input type="text" id="form3Example2" class="form-control" />
-                  <label class="form-label" for="form3Example2"
-                    >Last name</label
-                  >
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="form3Example2"
+                    class="form-control"
+                    placeholder="Last name"
+                    name="lastName"
+                    [(ngModel)]="model.lastName"
+                    #lastName="ngModel"
+                    required
+                    minlength="2"
+                    maxlength="20"
+                  />
+                </div>
+                <div
+                  class="alert alert-danger p-1 mt-2 mb-0"
+                  role="alert"
+                  *ngIf="lastName.invalid && lastName.dirty"
+                >
+                  <div *ngIf="lastName.errors?.['required']">
+                    lastName is required
+                  </div>
+                  <div *ngIf="lastName.errors?.['minlength']">
+                    lastName is invalid min length 2 or greater
+                  </div>
+                  <div *ngIf="lastName.errors?.['maxlength']">
+                    lastName is invalid max length 20 or smaller
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Email input -->
-            <!-- <div class="row">
-              <div class="col-md-6">
-                <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3" class="form-control" />
-                  <label class="form-label" for="form3Example3"
-                    >Email address</label
-                  >
-                </div>
-              </div>
-              <div class="col-md-6">
-                <h6 class="mb-2 pb-1 ">Gender:</h6>
-
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="femaleGender"
-                    value="option1"
-                    checked
-                  />
-                  <label class="form-check-label" for="femaleGender"
-                    >Female</label
-                  >
-                </div>
-
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="maleGender"
-                    value="option2"
-                  />
-                  <label class="form-check-label" for="maleGender">Male</label>
-                </div>
-              </div>
-            </div> -->
-
             <div class="row">
-              <div class="col-md-6 d-flex align-items-center">
-                <div class="form-outline mb-4">
+              <div class="col-md-6 align-items-center">
+                <div class="form-group">
                   <input
                     type="email"
                     id="form3Example3"
                     class="form-control"
+                    placeholder="Email address"
                     name="email"
+                    [(ngModel)]="model.email"
+                    #email="ngModel"
+                    required
+                    email
                   />
-                  <label class="form-label" for="form3Example3"
-                    >Email address</label
-                  >
+                </div>
+                <div
+                  class="alert alert-danger p-1 mt-1 mb-0"
+                  role="alert"
+                  *ngIf="email.invalid && email.dirty"
+                >
+                  <div *ngIf="email.errors?.['required']">
+                    email is required
+                  </div>
+                  <div *ngIf="email.errors?.['email']">email is invalid</div>
                 </div>
               </div>
               <div class="col-md-6 title_gender">
                 <h6 class="mb-2 pb-1">Gender:</h6>
 
-                <div class="form-check form-check-inline mb-4">
+                <div class="form-check form-check-inline">
                   <input
                     class="form-check-input"
                     type="radio"
                     name="inlineRadioOptions"
                     id="femaleGender"
-                    value="Female"
+                    value="female"
                     name="gender"
+                    name="firstName"
+                    [(ngModel)]="model.gender"
+                    #gender="ngModel"
+                    required
                   />
                   <label class="form-check-label" for="femaleGender"
                     >Female</label
                   >
                 </div>
 
-                <div class="form-check form-check-inline mb-4">
+                <div class="form-check form-check-inline">
                   <input
                     class="form-check-input"
                     type="radio"
                     name="inlineRadioOptions"
                     id="maleGender"
-                    value="Male"
+                    value="male"
                     checked
                     name="gender"
+                    [(ngModel)]="model.gender"
+                    #gender="ngModel"
+                    required
                   />
                   <label class="form-check-label" for="maleGender">Male</label>
+                </div>
+              </div>
+              <div
+                class="alert alert-danger p-1 mt-2 mb-0"
+                role="alert"
+                *ngIf="gender.invalid && gender.dirty"
+              >
+                <div *ngIf="gender.errors?.['required']">
+                  gender is required
                 </div>
               </div>
             </div>
 
             <!-- Password input -->
-            <div class="form-outline mb-4">
+            <div class="form-group mb-4">
               <input
                 type="password"
                 id="form3Example4"
                 class="form-control"
+                placeholder="password"
                 name="password"
+                [(ngModel)]="model.password"
+                #password="ngModel"
+                required
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               />
-              <label class="form-label" for="form3Example4">Password</label>
             </div>
-            <div class="row align-items-center py-3">
-              <div class="col-sm-2">
-                <h6 class="">Upload image</h6>
+            <div
+              class="alert alert-danger p-1 mt-0"
+              role="alert"
+              *ngIf="password.invalid && password.dirty"
+            >
+              <div *ngIf="password.errors?.['required']">
+                password is required
               </div>
-              <div class="col-sm-10 pe-5">
-                <input
-                  class="form-control form-control-lg"
-                  id="formFileLg"
-                  type="file"
-                />
+              <div *ngIf="password.errors?.['pattern']">
+                Must contain at least one number and one uppercase and lowercase
+                letter, and at least 8 or more characters
               </div>
             </div>
+
             <!-- Submit button -->
-            <button type="submit" class="main__btn my-2">Sign up</button>
+            <button
+              type="submit"
+              class="main__btn my-2"
+              [disabled]="!registerForm.valid"
+            >
+              Sign up
+            </button>
             <p class="small fw-bold mt-2 pt-1 mb-0">
               Do you have an account?
               <a routerLink="/login" class="link-danger">Login</a>

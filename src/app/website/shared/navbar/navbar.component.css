@@ -31,3 +31,17 @@
 
 .nav-link:hover {
 }
+.user__account {
+  font-size: 20px;
+  color: #4f4f4f;
+}
+
+.online {
+  width: 8px;
+  height: 8px;
+  background-color: rgb(39, 180, 39);
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+}

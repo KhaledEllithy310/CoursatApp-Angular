@@ -1,0 +1,31 @@
+:root {
+  --main-background-color: #ffb228;
+  --main-fontFamily: "Roboto Slab", serif;
+  --sec-fontFamily: "Acme", sans-serif;
+}
+.profile {
+  padding: 20px;
+}
+
+.img_profile {
+  text-align: center;
+}
+
+.img_profile img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+.profile__name {
+  font-size: 40px;
+  font-family: var(--main-fontFamily);
+}
+
+.profile__titleJob {
+  font-family: var(--main-fontFamily);
+  font-size: 16px;
+}
+.profile__about {
+  font-size: 15px;
+  font-family: var(--sec-fontFamily);
+}

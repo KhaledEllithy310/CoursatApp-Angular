@@ -1,0 +1,104 @@
+<div class="editProfile">
+  <form #loginForm="ngForm" (ngSubmit)="handelSubmit(loginForm)">
+    <!-- First Name -->
+    <div class="form-group mb-4">
+      <input
+        type="text"
+        id="form3Example3"
+        class="form-control form-control-lg"
+        placeholder="First Name"
+        name="firstName"
+        [(ngModel)]="model.firstName"
+        #firstName="ngModel"
+        required
+        value="{{ model.firstName }}"
+      />
+    </div>
+    <div
+      class="alert alert-danger p-1 mt-0"
+      role="alert"
+      *ngIf="firstName.invalid && firstName.dirty"
+    >
+      <div *ngIf="firstName.errors?.['required']">firstName is required</div>
+      <div *ngIf="firstName.errors?.['email']">firstName is invalid</div>
+    </div>
+    <!-- Last Name -->
+    <div class="form-group mb-4">
+      <input
+        type="text"
+        id="form3Example3"
+        class="form-control form-control-lg"
+        placeholder="Last Name"
+        name="lastName"
+        [(ngModel)]="model.lastName"
+        #lastName="ngModel"
+        required
+      />
+    </div>
+    <div
+      class="alert alert-danger p-1 mt-0"
+      role="alert"
+      *ngIf="lastName.invalid && lastName.dirty"
+    >
+      <div *ngIf="lastName.errors?.['required']">lastName is required</div>
+      <div *ngIf="lastName.errors?.['email']">lastName is invalid</div>
+    </div>
+    <!-- Email input -->
+    <div class="form-group mb-4">
+      <input
+        type="email"
+        id="form3Example3"
+        class="form-control form-control-lg"
+        placeholder="Email address"
+        name="email"
+        [(ngModel)]="model.email"
+        #email="ngModel"
+        required
+        email
+      />
+    </div>
+    <div
+      class="alert alert-danger p-1 mt-0"
+      role="alert"
+      *ngIf="email.invalid && email.dirty"
+    >
+      <div *ngIf="email.errors?.['required']">email is required</div>
+      <div *ngIf="email.errors?.['email']">email is invalid</div>
+    </div>
+
+    <!-- Password input -->
+    <!-- <div class="form-group mb-3">
+      <input
+        type="password"
+        id="form3Example4"
+        class="form-control form-control-lg"
+        placeholder="Password"
+        name="password"
+        [(ngModel)]="model.password"
+        #password="ngModel"
+        required
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+      />
+    </div>
+    <div
+      class="alert alert-danger p-1 mt-0"
+      role="alert"
+      *ngIf="password.invalid && password.dirty"
+    >
+      <div *ngIf="password.errors?.['required']">password is required</div>
+      <div *ngIf="password.errors?.['pattern']">
+        Must contain at least one number and one uppercase and lowercase letter,
+        and at least 8 or more characters
+      </div>
+    </div> -->
+    <div class="text-center mt-4 pt-2">
+      <button
+        type="submit"
+        class="main__btn__dash"
+        style="padding-left: 2.5rem; padding-right: 2.5rem"
+      >
+        Edit
+      </button>
+    </div>
+  </form>
+</div>

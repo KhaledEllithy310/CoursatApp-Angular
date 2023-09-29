@@ -1,0 +1,50 @@
+<div class="row m-0">
+  <button class="btn_dash" (click)="toggleCollapse()">
+    <i class="fa-solid fa-bars-staggered"></i>
+  </button>
+  <div class="col-3 bg-light dashboard" [ngClass]="{ collapsed: isCollapsed }">
+    <p class="dash__title">Coursatk</p>
+    <ul class="dash__list">
+      <li
+        routerLink="/instructor-account/profile"
+        routerLinkActive="activeLink"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        profile
+      </li>
+      <li
+        routerLink="/instructor-account/edit-profile"
+        routerLinkActive="activeLink"
+      >
+        Edit profile
+      </li>
+      <li routerLink="/instructor-account/photo" routerLinkActive="activeLink">
+        photo
+      </li>
+      <li routerLink="account-security" routerLinkActive="activeLink">
+        Account Security
+      </li>
+      <li
+        routerLink="/instructor-account/all-Courses"
+        routerLinkActive="activeLink"
+      >
+        All Courses
+      </li>
+      <li
+        routerLink="/instructor-account/add-course"
+        routerLinkActive="activeLink"
+      >
+        Add Course
+      </li>
+      <li
+        routerLink="/instructor-account/add-content"
+        routerLinkActive="activeLink"
+      >
+        Add Content
+      </li>
+    </ul>
+  </div>
+  <div class="col px-0 content">
+    <div class="p-3"><router-outlet></router-outlet></div>
+  </div>
+</div>

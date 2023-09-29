@@ -16,9 +16,21 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CatrgoriesComponent } from './website/components/catrgories/catrgories.component';
 import { HomeSectionComponent } from './website/components/home-section/home-section.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoursesSectionComponent } from './website/components/courses-section/courses-section.component';
+import { AddCourseComponent } from './website/components/add-course/add-course.component';
+import { InstructorAccountComponent } from './website/pages/instructor-account/instructor-account.component';
+import { SidebarInstructorComponent } from './website/components/sidebar-instructor/sidebar-instructor.component';
+import { AccountPhotoComponent } from './website/components/account-photo/account-photo.component';
+import { AccountSecurityComponent } from './website/components/account-security/account-security.component';
+import { AllCoursesComponent } from './website/components/all-courses/all-courses.component';
+import { EditProfileComponent } from './website/components/edit-profile/edit-profile.component';
+import { AddContentComponent } from './website/components/add-content/add-content.component';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { CountVideosPipe } from './pipes/count-videos.pipe';
+import { CourseDetailsComponent } from './website/components/course-details/course-details.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +47,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DashboardComponent,
     CatrgoriesComponent,
     HomeSectionComponent,
+    CoursesSectionComponent,
+    AddCourseComponent,
+    InstructorAccountComponent,
+    SidebarInstructorComponent,
+    AccountPhotoComponent,
+    AccountSecurityComponent,
+    AllCoursesComponent,
+    EditProfileComponent,
+    AddContentComponent,
+    CountVideosPipe,
+    CourseDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +72,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     }),
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

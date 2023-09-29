@@ -1,0 +1,91 @@
+<div class="addContent">
+  <h2>Add Content</h2>
+  <form #loginForm="ngForm" (ngSubmit)="handelSubmit(loginForm)">
+    <div class="form-group my-4">
+      <select
+        name="categoryId"
+        id=""
+        class="form-control"
+        [(ngModel)]="model.courseId"
+      >
+        <option value="">Select Course Name</option>
+        <option value=" {{ courses._id }}" *ngFor="let courses of allCourses">
+          {{ courses.name }}
+        </option>
+      </select>
+    </div>
+    <!-- nameVideo -->
+    <div class="form-group mb-4">
+      <h5>video</h5>
+      <input
+        type="text"
+        id="form3Example3"
+        class="form-control form-control-lg"
+        placeholder="Video Name"
+        name="nameVideo"
+        [(ngModel)]="model.nameVideo"
+        #nameVideo="ngModel"
+        required
+      />
+    </div>
+    <div
+      class="alert alert-danger p-1 mt-0"
+      role="alert"
+      *ngIf="nameVideo.invalid && nameVideo.dirty"
+    >
+      <div *ngIf="nameVideo.errors?.['required']">nameVideo is required</div>
+      <div *ngIf="nameVideo.errors?.['email']">nameVideo is invalid</div>
+    </div>
+    <div class="form-group mb-4">
+      <input
+        type="file"
+        id="form3Example4"
+        class="form-control form-control-lg"
+        #InputVideo
+      />
+    </div>
+    <div class="form-group mb-4">
+      <h5>Assignment</h5>
+      <input
+        type="text"
+        id="form3Example3"
+        class="form-control form-control-lg"
+        placeholder="Assignment Name"
+        name="nameAssignment"
+        [(ngModel)]="model.nameAssignment"
+        #nameAssignment="ngModel"
+        required
+      />
+    </div>
+    <div
+      class="alert alert-danger p-1 mt-0"
+      role="alert"
+      *ngIf="nameAssignment.invalid && nameAssignment.dirty"
+    >
+      <div *ngIf="nameAssignment.errors?.['required']">
+        nameAssignment is required
+      </div>
+      <div *ngIf="nameAssignment.errors?.['email']">
+        nameAssignment is invalid
+      </div>
+    </div>
+    <div class="form-group mb-4">
+      <input
+        type="file"
+        id="form3Example4"
+        class="form-control form-control-lg"
+        #InputAssignment
+      />
+    </div>
+
+    <div class="text-center pt-2">
+      <button
+        type="submit"
+        class="main__btn__dash"
+        style="padding-left: 2.5rem; padding-right: 2.5rem"
+      >
+        Add Content
+      </button>
+    </div>
+  </form>
+</div>

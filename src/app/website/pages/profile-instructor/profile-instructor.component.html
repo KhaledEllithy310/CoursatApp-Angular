@@ -1,1 +1,20 @@
-<p>profile-instructor works!</p>
+<div class="profile">
+  <div class="row">
+    <div class="col-4">
+      <div class="img_profile">
+        <img src="{{ userData?.image }}" class="img-fluid" alt="image-profile" />
+      </div>
+    </div>
+    <div class="col-8">
+      <h2 class="profile__name">
+        {{ userData?.firstName + " " + userData?.lastName }}
+      </h2>
+      <h5 class="profile__titleJob">FullStack Developer</h5>
+      <p class="profile__about">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias
+        cumque, adipisci eaque obcaecati ipsum molestiae totam animi dolore esse
+        voluptatum?
+      </p>
+    </div>
+  </div>
+</div>

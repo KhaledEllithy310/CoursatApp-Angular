@@ -1,113 +1,3 @@
-<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container">
-    <a class="navbar-brand" routerLink=""></a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            aria-current="page"
-            routerLink=""
-            routerLinkActive="text-danger"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >Home</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="courses"
-            routerLinkActive="text-danger"
-            >courses</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="login" routerLinkActive="text-danger"
-            >login</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="register-student"
-            routerLinkActive="text-danger"
-            >register</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="contact"
-            routerLinkActive="text-danger"
-            >contact</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="dashboard"
-            routerLinkActive="text-danger"
-            >dashboard</a
-          >
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item me-3 me-lg-1 nav-item dropdown">
-          <a
-            class="nav-link d-sm-flex align-items-sm-center dropdown-toggle"
-            href="#"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            role="button"
-          >
-            <img
-              src="https://mdbootstrap.com/img/new/avatars/1.webp"
-              class="rounded-circle"
-              height="22"
-              alt=""
-              loading="lazy"
-            />
-            <strong class="d-none d-sm-block ms-1">John</strong>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav> -->
-
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <!-- Container wrapper -->
@@ -147,7 +37,7 @@
             >Courses</a
           >
         </li>
-        <div class="nav-item dropdown">
+        <!-- <div class="nav-item dropdown">
           <a
             class="dropdown-toggle nav-link"
             href="#"
@@ -180,15 +70,15 @@
               >
             </li>
           </ul>
-        </div>
-        <li class="nav-item">
+        </div> -->
+        <!-- <li class="nav-item">
           <a
             class="nav-link"
             routerLink="profile-student"
             routerLinkActive="active"
             >profile-student</a
           >
-        </li>
+        </li> -->
       </ul>
       <!-- Left links -->
     </div>
@@ -202,7 +92,7 @@
       </a>
 
       <!-- Notifications -->
-      <div class="dropdown">
+      <!-- <div class="dropdown">
         <a
           class="text-reset me-3 dropdown-toggle hidden-arrow"
           href="#"
@@ -228,11 +118,11 @@
             <a class="dropdown-item" href="#">Something else here</a>
           </li>
         </ul>
-      </div>
+      </div> -->
       <!-- Avatar -->
-      <div class="dropdown">
+      <div class="dropdown" *ngIf="auth.isLogin">
         <a
-          class="dropdown-toggle d-flex align-items-center hidden-arrow"
+          class="dropdown-toggle d-flex align-items-center hidden-arrow user__account"
           href="#"
           id="navbarDropdownMenuAvatar"
           role="button"
@@ -240,25 +130,61 @@
           aria-expanded="false"
         >
           <img
-            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+            src="{{ auth.userData?.image }}"
             class="rounded-circle"
-            height="25"
-            alt="Black and White Portrait of a Man"
+            height="30"
+            width="30"
+            alt="image profile"
             loading="lazy"
           />
+          <span class="online"></span>
+          <!-- <i class="fa-solid fa-user"></i> -->
+        </a>
+        <ul
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="navbarDropdownMenuAvatar"
+        >
+          <li *ngIf="auth.userType == 'student'">
+            <a class="dropdown-item" routerLink="profile-student"
+              >My profile student</a
+            >
+          </li>
+          <li *ngIf="auth.userType == 'instructor'">
+            <a class="dropdown-item" routerLink="instructor-account"
+              >Account instructor</a
+            >
+          </li>
+          <!-- <li>
+            <a class="dropdown-item" routerLink="">Settings</a>
+          </li> -->
+          <li>
+            <a class="dropdown-item" routerLink="" (click)="handleLogOut()"
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="dropdown" *ngIf="!auth.isLogin">
+        <a
+          class="dropdown-toggle d-flex align-items-center hidden-arrow user__account"
+          href="#"
+          id="navbarDropdownMenuAvatar"
+          role="button"
+          data-mdb-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-user"></i>
         </a>
         <ul
           class="dropdown-menu dropdown-menu-end"
           aria-labelledby="navbarDropdownMenuAvatar"
         >
           <li>
-            <a class="dropdown-item" href="#">My profile</a>
+            <a class="dropdown-item" routerLink="login">login</a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">Settings</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Logout</a>
+            <a class="dropdown-item" routerLink="register-student">Register</a>
           </li>
         </ul>
       </div>

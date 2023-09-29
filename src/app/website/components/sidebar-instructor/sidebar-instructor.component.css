@@ -1,0 +1,124 @@
+/* .dashboard {
+  min-width: 300px;
+} */
+:root {
+  --main-background-color: #ffb228;
+  --main-fontFamily: "Roboto Slab", serif;
+  --sec-fontFamily: "Acme", sans-serif;
+}
+
+.dashboard {
+  opacity: 1;
+  max-width: 200px;
+  min-width: 200px;
+  visibility: visible;
+  transition: visibility 400ms ease-in-out, opacity 450ms ease-in-out,
+    min-width 400ms ease-in-out;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  height: calc(100vh);
+  position: relative;
+}
+
+.collapsed {
+  opacity: 0;
+  min-width: 0;
+  max-width: 0;
+  visibility: hidden;
+}
+
+.btn_dash {
+  border: none;
+  border-radius: 5px;
+  background-color: #c08261;
+  background-color: #aaa389;
+  /* border: 1px solid #952323; */
+  font-size: 20px;
+  position: relative;
+  top: 0;
+  left: 0;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 10;
+  width: fit-content;
+  text-align: center;
+}
+
+.dash__title {
+  font-size: 30px;
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+  background-color: #952323;
+  color: #dad4b5;
+  font-family: var(--main-fontFamily);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.dash__title:hover {
+  letter-spacing: 1px;
+  background-color: #a73121;
+  color: #bcb698;
+}
+
+.dashboard ul {
+  padding: 0;
+}
+
+.dashboard li {
+  display: block;
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.446);
+  /* background-color: #dad4b5; */
+  text-transform: capitalize;
+  transition: all 0.3s;
+}
+.dashboard {
+  background-color: #dad4b5 !important;
+}
+.dashboard li:hover {
+  background-color: #f2e8c6;
+  padding-left: 15px;
+}
+
+.activeLink {
+  background-color: #f2e8c6;
+  padding-left: 20px;
+  /* background-color: #952323; */
+  font-weight: 600;
+}
+
+.content {
+  background-color: #eee;
+  background-color: #f2e8c6;
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard {
+    width: auto !important;
+    max-width: 100vw;
+    height: auto;
+  }
+
+  .dash__list {
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+    flex-flow: row wrap;
+    padding: 5px !important;
+  }
+
+  .dash__list li {
+    border: 1px solid rgba(0, 0, 0, 0.446);
+    /* margin: 5px; */
+  }
+
+  .btn_dash {
+    position: absolute;
+    top: 77px;
+    display: none;
+  }
+}

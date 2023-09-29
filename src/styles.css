@@ -8,7 +8,9 @@
   background-color: var(--main-background-color) !important;
   color: white !important;
 } */
-
+img {
+  width: 100%;
+}
 .navbar {
   /* background-color: ; */
 }
@@ -27,11 +29,12 @@ input {
   font-size: 40px !important;
 }
 
-.main__btn {
+.main__btn,
+.main__btn__dash {
   background-color: white;
   color: black;
   border-radius: 40px;
-  width: 10rem;
+  width: 12rem;
   padding: 10px 0;
   position: relative;
   z-index: 2;
@@ -58,4 +61,20 @@ input {
 }
 .main__btn:hover {
   color: white;
+}
+
+.main__btn__dash::after {
+  content: "";
+  background-color: #dad4b5;
+  width: 0;
+  right: 0;
+  inset: 0;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s;
+}
+
+.main__btn__dash:hover::after {
+  width: 100%;
 }
