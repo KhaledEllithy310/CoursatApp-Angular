@@ -31,6 +31,12 @@ import { AddContentComponent } from './website/components/add-content/add-conten
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { CountVideosPipe } from './pipes/count-videos.pipe';
 import { CourseDetailsComponent } from './website/components/course-details/course-details.component';
+import { StudentAccountComponent } from './pages/student-account/student-account.component';
+import { MyWishListComponent } from './pages/my-wish-list/my-wish-list.component';
+import { MyCartComponent } from './pages/my-cart/my-cart.component';
+import { MyLearningComponent } from './pages/my-learning/my-learning.component';
+import { MyCoursesComponent } from './website/components/my-courses/my-courses.component';
+import { EditContentComponent } from './pages/edit-content/edit-content.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +64,12 @@ import { CourseDetailsComponent } from './website/components/course-details/cour
     AddContentComponent,
     CountVideosPipe,
     CourseDetailsComponent,
+    StudentAccountComponent,
+    MyWishListComponent,
+    MyCartComponent,
+    MyLearningComponent,
+    MyCoursesComponent,
+    EditContentComponent,
   ],
   imports: [
     BrowserModule,

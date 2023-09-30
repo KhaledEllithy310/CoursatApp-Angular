@@ -73,8 +73,8 @@
 
 .courses__list__item__wishList {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 50px;
+  right: 10px;
   color: #000;
   cursor: pointer;
   font-size: 18px;

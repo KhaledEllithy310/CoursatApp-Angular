@@ -6,42 +6,47 @@
     <p class="dash__title">Coursatk</p>
     <ul class="dash__list">
       <li
-        routerLink="/instructor-account/profile"
+        routerLink="profile"
         routerLinkActive="activeLink"
         [routerLinkActiveOptions]="{ exact: true }"
       >
         profile
       </li>
-      <li
-        routerLink="/instructor-account/edit-profile"
-        routerLinkActive="activeLink"
-      >
+      <li routerLink="edit-profile" routerLinkActive="activeLink">
         Edit profile
       </li>
-      <li routerLink="/instructor-account/photo" routerLinkActive="activeLink">
-        photo
-      </li>
+      <li routerLink="photo" routerLinkActive="activeLink">photo</li>
       <li routerLink="account-security" routerLinkActive="activeLink">
         Account Security
       </li>
-      <li
-        routerLink="/instructor-account/all-Courses"
-        routerLinkActive="activeLink"
-      >
-        All Courses
-      </li>
-      <li
-        routerLink="/instructor-account/add-course"
-        routerLinkActive="activeLink"
-      >
-        Add Course
-      </li>
-      <li
-        routerLink="/instructor-account/add-content"
-        routerLinkActive="activeLink"
-      >
-        Add Content
-      </li>
+      <ng-container *ngIf="auth.userType == 'instructor'">
+        <li routerLink="my-Courses" routerLinkActive="activeLink">
+          All Courses
+        </li>
+        <li routerLink="add-course" routerLinkActive="activeLink">
+          Add Course
+        </li>
+        <li routerLink="add-content" routerLinkActive="activeLink">
+          Add Content
+        </li>
+      </ng-container>
+      <ng-container *ngIf="auth.userType == 'student'">
+        <li
+          routerLink="/student-account/wishList"
+          routerLinkActive="activeLink"
+        >
+          Wish List
+        </li>
+        <li
+          routerLink="/student-account/myLearning"
+          routerLinkActive="activeLink"
+        >
+          My Learning
+        </li>
+        <li routerLink="/student-account/myCart" routerLinkActive="activeLink">
+          My Cart
+        </li>
+      </ng-container>
     </ul>
   </div>
   <div class="col px-0 content">

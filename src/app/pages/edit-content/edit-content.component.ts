@@ -1,19 +1,18 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CoursesService } from 'src/app/services/courses.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
-  selector: 'app-add-content',
-  templateUrl: './add-content.component.html',
-  styleUrls: ['./add-content.component.css'],
+  selector: 'app-edit-content',
+  templateUrl: './edit-content.component.html',
+  styleUrls: ['./edit-content.component.css'],
 })
-export class AddContentComponent {
+export class EditContentComponent {
   @ViewChild('InputVideo', { static: false }) InputVideo!: ElementRef;
   @ViewChild('InputAssignment', { static: false }) InputAssignment!: ElementRef;
-
   allCourses: any[] = [];
 
   model = {
@@ -26,26 +25,38 @@ export class AddContentComponent {
     private login: LoginService,
     private toastr: ToastrService,
     private router: Router,
-    private coursesService: CoursesService
+    private coursesService: CoursesService,
+    private activate: ActivatedRoute
   ) {}
 
+  contentId: any;
+  courseId: any;
+  contentCourse: any = [];
+  course: any;
   ngOnInit() {
-    // get all courses
-    this.getAllCourses();
+    // this.getAllCourses();
+    this.activate.paramMap.subscribe((params) => {
+      this.contentId = params.get('contentId');
+      this.courseId = params.get('courseId');
+    });
   }
 
   handelSubmit(form: NgForm) {
-    if (form.valid) {
+    if (form) {
       const formData = new FormData();
-      formData.append('videoName', this.model.nameVideo);
-      formData.append('video', this.InputVideo.nativeElement.files[0]);
-      formData.append('assignmentName', this.model.nameAssignment);
-      formData.append(
-        'assignment',
-        this.InputAssignment.nativeElement.files[0]
-      );
+      if (this.model.nameVideo)
+        formData.append('videoName', this.model.nameVideo);
+      if (this.InputVideo.nativeElement.files[0])
+        formData.append('video', this.InputVideo.nativeElement.files[0]);
+      if (this.model.nameAssignment)
+        formData.append('assignmentName', this.model.nameAssignment);
+      if (this.InputAssignment.nativeElement.files[0])
+        formData.append(
+          'assignment',
+          this.InputAssignment.nativeElement.files[0]
+        );
       // send request to server
-      this.coursesService.addContent(formData, this.model.courseId).subscribe(
+      this.coursesService.editContent(formData, this.contentId).subscribe(
         (res) => {
           console.log(res);
           //clear all inputs
@@ -57,6 +68,10 @@ export class AddContentComponent {
           if (fileInput) {
             fileInput.value = '';
           }
+
+          this.router.navigateByUrl(
+            `instructor-account/course-details/${this.courseId}`
+          );
         },
         (err) => {
           console.log(err);

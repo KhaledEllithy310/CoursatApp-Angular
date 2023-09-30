@@ -22,6 +22,10 @@ export class LoginService {
     return this.http.post(`${this.baseUrl}students/add`, data);
   }
 
+  registerInstructor(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}instructors/add`, data);
+  }
+
   uploadImage(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}users/uploadImage`, data);
   }

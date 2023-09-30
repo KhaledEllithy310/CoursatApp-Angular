@@ -45,3 +45,18 @@
   background-color: #dad4b5;
   padding: 5px;
 }
+
+.description__course h4 {
+  text-transform: capitalize;
+  font-family: var(--main-fontFamily);
+  margin-top: 30px;
+}
+
+.icon__edit__content {
+  color: white;
+  font-size: 20px;
+}
+
+.icon__edit__content:hover {
+  color: yellow;
+}

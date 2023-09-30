@@ -37,48 +37,6 @@
             >Courses</a
           >
         </li>
-        <!-- <div class="nav-item dropdown">
-          <a
-            class="dropdown-toggle nav-link"
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-            routerLinkActive="active"
-          >
-            profile
-          </a>
-          <ul
-            class="dropdown-menu dropdown-menu-end"
-            aria-labelledby="navbarDropdownMenuLink"
-          >
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="login"
-                routerLinkActive="active"
-                >login</a
-              >
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="register-student"
-                routerLinkActive="active"
-                >Register</a
-              >
-            </li>
-          </ul>
-        </div> -->
-        <!-- <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="profile-student"
-            routerLinkActive="active"
-            >profile-student</a
-          >
-        </li> -->
       </ul>
       <!-- Left links -->
     </div>
@@ -87,38 +45,10 @@
     <!-- Right elements -->
     <div class="d-flex align-items-center">
       <!-- Icon -->
-      <a class="text-reset me-3" routerLink="courses">
+      <a class="text-reset me-3" routerLink="myCart">
         <i class="fas fa-shopping-cart"></i>
       </a>
 
-      <!-- Notifications -->
-      <!-- <div class="dropdown">
-        <a
-          class="text-reset me-3 dropdown-toggle hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuLink"
-          role="button"
-          data-mdb-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <i class="fas fa-bell"></i>
-          <span class="badge rounded-pill badge-notification bg-danger">1</span>
-        </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuLink"
-        >
-          <li>
-            <a class="dropdown-item" href="#">Some news</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Another news</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </li>
-        </ul>
-      </div> -->
       <!-- Avatar -->
       <div class="dropdown" *ngIf="auth.isLogin">
         <a
@@ -145,8 +75,8 @@
           aria-labelledby="navbarDropdownMenuAvatar"
         >
           <li *ngIf="auth.userType == 'student'">
-            <a class="dropdown-item" routerLink="profile-student"
-              >My profile student</a
+            <a class="dropdown-item" routerLink="student-account"
+              >Account student</a
             >
           </li>
           <li *ngIf="auth.userType == 'instructor'">
@@ -154,9 +84,6 @@
               >Account instructor</a
             >
           </li>
-          <!-- <li>
-            <a class="dropdown-item" routerLink="">Settings</a>
-          </li> -->
           <li>
             <a class="dropdown-item" routerLink="" (click)="handleLogOut()"
               >Logout</a
@@ -184,7 +111,14 @@
             <a class="dropdown-item" routerLink="login">login</a>
           </li>
           <li>
-            <a class="dropdown-item" routerLink="register-student">Register</a>
+            <a class="dropdown-item" routerLink="register-student"
+              >Register as student</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="register-instructor"
+              >Register as instructor</a
+            >
           </li>
         </ul>
       </div>

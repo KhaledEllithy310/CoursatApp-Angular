@@ -18,7 +18,7 @@ export class AllCoursesComponent {
 
   // get all courses
   getAllCourses() {
-    this.coursesService.getAllCourses().subscribe(
+    this.coursesService.getMyCourses().subscribe(
       (res) => {
         console.log(res);
         this.allCourses = res.data;

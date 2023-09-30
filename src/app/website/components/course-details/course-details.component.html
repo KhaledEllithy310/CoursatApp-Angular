@@ -1,80 +1,18 @@
-<!-- <div class="row">
-  <div class="col-8">
-    <div class="video__content">
-      <video src="">
-        <source src="http://localhost:3000{{}}" type="">
-      </video>
-    </div>
-  </div>
-  <div class="col-4">
-    <div class="content__course">
-      <div
-        class="content__course__lesson__container"
-        *ngFor="let content of contentCourse; let i = index"
-      >
-        <h5 class="content__course__lesson__container__title">
-          session{{ i + 1 }}
-        </h5>
-        <div class="content__course__lesson__container__current">
-          <div class="content__course__lesson__container__videoName">
-            {{ i + 1 }} - {{ content.video.name }}
-          </div>
-          <div class="content__course__lesson__container__assignmentName">
-            {{ content.assignment.name }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-<!--
-<div class="row">
-  <div class="col-8">
-    <div class="video__content">
-      <video src="">
-        <source src="http://localhost:3000{{}}" type="">
-      </video>
-    </div>
-  </div>
-  <div class="col-4">
-    <div class="content__course">
-      <div
-        class="content__course__lesson__container"
-        *ngFor="let content of contentCourse; let i = index"
-      >
-        <h5
-          class="content__course__lesson__container__title"
-          (click)="toggleContent(i)"
-        >
-          session{{ i + 1 }}
-        </h5>
-        <div
-          class="content__course__lesson__container__current"
-          [hidden]="!content.collapsed"
-        >
-          <div class="content__course__lesson__container__videoName">
-            {{ i + 1 }} - {{ content.video.name }}
-          </div>
-          <div class="content__course__lesson__container__assignmentName">
-            {{ content.assignment.name }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="row py-5">
-  <h2 class="title">course {{ course.name }}</h2>
+  <h2 class="title">course {{ course?.name }}</h2>
   <div class="col-8">
     <ng-container *ngIf="!selectedVideoUrl">
-      <img src="{{ course.image }}" alt="Placeholder Image" width="500" />
+      <img src="{{ course?.image }}" alt="Placeholder Image" width="500" />
     </ng-container>
     <div class="video__content">
       <video [src]="selectedVideoUrl" *ngIf="selectedVideoUrl" controls>
         <!-- <source [src]="selectedVideoUrl" type=""> -->
       </video>
     </div>
+    <div class="description__course">
+      <h4>description</h4>
+      <p>{{ course?.description }}</p>
+    </div>
   </div>
   <div class="col-4">
     <div class="content__course">
@@ -82,27 +20,40 @@
         class="content__course__lesson__container"
         *ngFor="let content of contentCourse; let i = index"
       >
-        <h5
-          class="content__course__lesson__container__title"
-          (click)="toggleContent(i)"
-        >
-          session{{ i + 1 }}
-        </h5>
+        <div class="container">
+          <div class="row align-items-center justify-content-between">
+            <div class="col">
+              <h5
+                class="content__course__lesson__container__title"
+                (click)="toggleContent(i)"
+              >
+                session{{ i + 1 }}
+              </h5>
+            </div>
+            <a
+              class="col text-end icon__edit__content"
+              *ngIf="auth.userType == 'instructor'"
+              routerLink="/instructor-account/edit-content/{{ content._id }}/{{ courseId }}"
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </a>
+          </div>
+        </div>
         <div
           class="content__course__lesson__container__current"
           [hidden]="!content.collapsed"
         >
           <div
             class="content__course__lesson__container__videoName"
-            (click)="openVideo(content.video.file)"
+            (click)="openVideo(content?.video?.file)"
           >
-            {{ i + 1 }} - {{ content.video.name }}
+            {{ i + 1 }} - {{ content?.video?.name }}
           </div>
           <div
             class="content__course__lesson__container__assignmentName"
-            (click)="openAssignment(content.assignment.file)"
+            (click)="openAssignment(content?.assignment?.file)"
           >
-            {{ content.assignment.name }}
+            {{ content?.assignment?.name }}
           </div>
         </div>
       </div>

@@ -1,33 +1,34 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { CartService } from 'src/app/services/cart.service';
 import { CoursesService } from 'src/app/services/courses.service';
 import { LoginService } from 'src/app/services/login.service';
-import { CartService } from './../../../services/cart.service';
-import { ToastrService } from 'ngx-toastr';
+import { WishListService } from './../../services/wish-list.service';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css'],
+  selector: 'app-my-wish-list',
+  templateUrl: './my-wish-list.component.html',
+  styleUrls: ['./my-wish-list.component.css'],
 })
-export class CardComponent {
-  isLoading: boolean = true;
+export class MyWishListComponent {
+  isLoading: boolean = false;
   allCourses: any[] = [];
   constructor(
     public auth: LoginService,
     private coursesService: CoursesService,
     private cartService: CartService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private WishListService: WishListService
   ) {}
 
   ngOnInit() {
     this.getAllCourses();
   }
-
   getAllCourses() {
-    this.coursesService.getAllCoursesPublish().subscribe(
+    this.WishListService.showMyWishList().subscribe(
       (res) => {
-        console.log(res);
-        this.allCourses = res.data;
+        console.log(res.data.wishList);
+        this.allCourses = res.data.wishList;
       },
       (err) => {
         console.log(err);
@@ -46,25 +47,7 @@ export class CardComponent {
           console.log(res);
           this.cartService.countCoursesInCart++;
           console.log(this.cartService.countCoursesInCart);
-
-          this.toastr.success(res.message, 'Success', { timeOut: 1000 });
-        },
-        (err: any) => {
-          console.log(err);
-          this.toastr.error(err.error.data, 'Error', { timeOut: 1000 });
-        }
-      );
-    } else this.toastr.error('please log in', 'Error', { timeOut: 1000 });
-  }
-
-  addToWishList(courseId: any) {
-    let token = localStorage.getItem('token');
-    if (token) {
-      this.cartService.addToWishList(courseId).subscribe(
-        (res: any) => {
-          console.log(res);
-          // this.cartService.countCoursesInCart++;
-          // console.log(this.cartService.countCoursesInCart);
+          this.getAllCourses();
 
           this.toastr.success(res.message, 'Success', { timeOut: 1000 });
         },

@@ -51,8 +51,8 @@
   /* cursor: pointer; */
   position: relative;
 }
-/*
-.courses__list__item:hover {
+
+/* .courses__list__item:hover {
   transform: scale(1.07);
 } */
 
@@ -65,21 +65,38 @@
 .courses__list__item__show {
   position: absolute;
   top: 8px;
-  right: 8px;
+  right: 10px;
   color: #952323;
   cursor: pointer;
   font-size: 18px;
 }
 
-.courses__list__item__wishList {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  color: #000;
-  cursor: pointer;
-  font-size: 18px;
+/* ********************************************************* */
+
+.cart__item {
+  margin-bottom: 30px;
+  border: 1px solid #969696;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
 }
 
-.courses__list__item__wishList:focus {
+.cart__item__name,
+.cart__item__price,
+.cart__item__numCors.cart__item__numCorses {
+  font-family: var(--main-fontFamily);
+  font-size: 18px;
+  text-transform: capitalize;
+  margin: 0 0 10px 0;
+}
+
+.btn__delete__cart {
+  font-size: 20px;
   color: red;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+
 }

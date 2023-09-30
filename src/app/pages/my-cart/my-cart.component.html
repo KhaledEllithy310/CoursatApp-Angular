@@ -1,0 +1,53 @@
+
+
+<div class="container">
+  <div class="row my-4">
+    <div class="col-12 col-md-8">
+      <div *ngIf="myCourseCart.length === 0">your cart is empty</div>
+
+      <div class="cart__item" *ngFor="let course of myCourseCart">
+        <div class="row">
+          <div class="col-4">
+            <div class="cart__item__img">
+              <img src="{{ course?.courseId?.image }}" alt="" />
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="cart__item__name">{{ course?.courseId?.name }}</div>
+            <div class="cart__item__price">
+              <strong>${{ course?.courseId?.price }}</strong>
+            </div>
+            <div class="cart__item__numCorses">
+              +{{ course.content | countVideos }}
+            </div>
+          </div>
+          <span
+            class="btn__delete__cart"
+            (click)="deleteCourseFromCart(course?.courseId?._id)"
+            ><i class="fa-solid fa-trash"></i
+          ></span>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <h4>Check Out</h4>
+      <h5>{{ cartService.countCoursesInCart }} Items</h5>
+      <div class="row">
+        <div class="col">total price</div>
+        <div class="col">{{ totalPrice() }}</div>
+      </div>
+      <div class="checkout my-4">
+        <input
+          type="text"
+          name="promoCode"
+          class="form-control"
+          placeholder="enter your promo code"
+          [(ngModel)]="promoCode"
+        />
+        <button class="main__btn__dash mt-3" (click)="checkOut()">
+          checkout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

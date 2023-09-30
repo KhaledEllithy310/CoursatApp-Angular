@@ -12,12 +12,16 @@ export class CoursesService {
 
   constructor(private http: HttpClient) {}
 
-  getAllCourses(): Observable<any> {
+  getMyCourses(): Observable<any> {
     return this.http.get(`${this.baseUrl}instructors/showCourses`);
   }
 
-  getAllCoursesAll(): Observable<any> {
-    return this.http.get(`${this.baseUrl}admin/showAllCourses`);
+  getAllCoursesPublish(): Observable<any> {
+    return this.http.get(`${this.baseUrl}admin/showAllCoursesPublish`);
+  }
+
+  getAllCoursesPending(): Observable<any> {
+    return this.http.get(`${this.baseUrl}admin/showAllCoursesPending`);
   }
 
   addCourse(data: any): Observable<any> {
@@ -31,9 +35,22 @@ export class CoursesService {
     );
   }
 
+  editContent(data: any, contentId: any): Observable<any> {
+    return this.http.patch(
+      `${this.baseUrl}instructors/editContent/${contentId}`,
+      data
+    );
+  }
+
   getCourseById(courseId: any): Observable<any> {
     return this.http.get(
       `${this.baseUrl}instructors/showCourseById/${courseId}`
+    );
+  }
+
+  showCourseByIdForStudents(courseId: any): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}instructors/showCourseByIdForStudents/${courseId}`
     );
   }
 }

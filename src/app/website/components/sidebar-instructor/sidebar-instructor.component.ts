@@ -7,6 +7,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-sidebar-instructor',
   templateUrl: './sidebar-instructor.component.html',
@@ -20,7 +21,7 @@ import {
   ],
 })
 export class SidebarInstructorComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, public auth: LoginService) {}
 
   isCollapsed = false;
 

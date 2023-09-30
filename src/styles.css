@@ -78,3 +78,26 @@ input {
 .main__btn__dash:hover::after {
   width: 100%;
 }
+
+.btn__addToCart {
+  width: 8rem;
+  padding: 8px 0;
+  border: none;
+  border-radius: 6px;
+  /* background-color: #dad4b5; */
+  background-color: #dad4b57c;
+
+  outline: 2px solid #dad4b5;
+  outline-offset: 2px;
+
+  margin-top: 20px;
+  transition: all 0.3s;
+  font-family: var(--main-fontFamily);
+}
+
+.btn__addToCart:hover {
+  /* outline: 2px solid #952323;
+  outline-offset: 2px; */
+  /* background-color: #dad4b57c; */
+  background-color: #dad4b5;
+}

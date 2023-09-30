@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -10,11 +10,12 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  // @ViewChild('imageInput', { static: false }) imageInput!: ElementRef;
+  UserType: any;
   constructor(
     private login: LoginService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private activated: ActivatedRoute
   ) {}
   model = {
     firstName: '',
@@ -24,18 +25,35 @@ export class RegisterComponent {
     password: '',
   };
 
+  ngOnInit() {
+    this.activated.data.subscribe((res) => {
+      console.log(res['type']);
+      this.UserType = res['type'];
+    });
+  }
   handleSubmit(form: NgForm) {
     // const image: File = this.imageInput.nativeElement.files[0];
 
     if (form.valid) {
-      this.login.registerStudent(this.model).subscribe((res: any) => {
-        console.log(res);
+      if (this.UserType == 'student') {
+        this.login.registerStudent(this.model).subscribe((res: any) => {
+          console.log(res);
 
-        this.toastr.success(res.message, 'Success', { timeOut: 1000 });
-        setTimeout(() => {
-          this.router.navigate(['login']);
-        }, 1500);
-      });
+          this.toastr.success(res.message, 'Success', { timeOut: 1000 });
+          setTimeout(() => {
+            this.router.navigate(['login']);
+          }, 1500);
+        });
+      } else if (this.UserType == 'instructor') {
+        this.login.registerInstructor(this.model).subscribe((res: any) => {
+          console.log(res);
+
+          this.toastr.success(res.message, 'Success', { timeOut: 1000 });
+          setTimeout(() => {
+            this.router.navigate(['login']);
+          }, 1500);
+        });
+      }
     }
   }
   // handleSubmit(form: NgForm) {

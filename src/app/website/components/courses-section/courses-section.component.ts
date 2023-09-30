@@ -8,7 +8,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./courses-section.component.css'],
 })
 export class CoursesSectionComponent {
-  @Input() courses: any[] = [];
+  @Input() allCourses: any[] = [];
   @Input() isLoading: boolean = false;
   constructor(
     private coursesService: CoursesService,
@@ -20,9 +20,9 @@ export class CoursesSectionComponent {
   }
 
   getAllCourses() {
-    this.coursesService.getAllCoursesAll().subscribe((res) => {
+    this.coursesService.getAllCoursesPublish().subscribe((res) => {
       console.log(res);
-      this.courses = res.data;
+      this.allCourses = res.data;
     });
   }
 }
