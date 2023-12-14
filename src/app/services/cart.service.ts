@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 export class CartService {
   constructor(private http: HttpClient) {}
   countCoursesInCart: any = 0;
-  baseUrl = 'http://localhost:3000/';
+  // baseUrl = 'http://localhost:3000/';
+  baseUrl = 'https://coursatk-server.onrender.com/';
 
   addToCart(courseId: any): Observable<any> {
     return this.http.post(

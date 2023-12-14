@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class WishListService {
   constructor(private http: HttpClient) {}
-  baseUrl = 'http://localhost:3000/';
-
+  // baseUrl = 'http://localhost:3000/';
+  baseUrl = 'https://coursatk-server.onrender.com/';
   showMyWishList(): Observable<any> {
     return this.http.get(`${this.baseUrl}students/showWishList/`);
   }

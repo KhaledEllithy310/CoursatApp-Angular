@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CategoriesService {
-  baseUrl = 'http://localhost:3000/';
+  // baseUrl = 'http://localhost:3000/';
+  baseUrl = 'https://coursatk-server.onrender.com/';
   isLogin = false;
   userType = 'student';
 

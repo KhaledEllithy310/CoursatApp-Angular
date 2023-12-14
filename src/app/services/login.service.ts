@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginService {
-  baseUrl = 'http://localhost:3000/';
-  isLogin = false;
+  // baseUrl = 'http://localhost:3000/';
+  baseUrl = 'https://coursatk-server.onrender.com/';  isLogin = false;
   userType = localStorage.getItem('type');
   Data = localStorage.getItem('userData');
   userData = this.Data ? JSON.parse(this.Data) : null;
